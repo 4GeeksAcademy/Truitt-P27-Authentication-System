@@ -90,22 +90,6 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
-# !!!!! My added code !!!!!
-# @app.route('/login', methods=['POST'])
-# def login():
-#     if request.form['username'] and request.form['password'] == '123456':
-#         session['logged in'] = True
-#         token = jwt.encode({
-#         'user':request.form['username'],
-#         'expiration': str(datetime.utcnow() + timedelta(seconds=300))
-#         },
-#             app.config['SECRET_KEY'])
-#         return jsonify({'token': token.decode('utf-8')})
-#     else:
-#         return make_response('Unable to verify', 403, {'WWW-Authenticate': 'Basic realm:"Authentication Failed!'})
-
-
-# this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3001))
     app.run(host='0.0.0.0', port=PORT, debug=True)
